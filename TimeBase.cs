@@ -1,13 +1,13 @@
 ﻿namespace Clock
 {
-    public abstract class Time
+    public abstract class TimeBase
     {
         protected System.Timers.Timer timer;
-        protected double secondCounter = 0.0f;
+        protected double millisecondsTime = 0.0f;
         protected double intervalMilliseconds;
         protected bool isRunning = false;
 
-        public Time(double intervalMilliseconds = 100.0f)
+        public TimeBase(double intervalMilliseconds = 50.0f)
         {
             this.intervalMilliseconds = intervalMilliseconds;
             
@@ -30,23 +30,23 @@
 
         public double GetTime()
         {
-            return secondCounter;
+            return millisecondsTime;
         }
 
         public void ResetTime()
         {
-            secondCounter = 0.0f;
+            millisecondsTime = 0.0f;
         }
 
-        public void setSsecondCounter(double value)
+        public void setMillisecondsTime(double value)
         {
-            secondCounter = value;
+            millisecondsTime = value;
         }
 
-        public void DrawTimer()
+        public void DrawTimer(TimeSpan time)
         {
             Console.Clear();
-            Console.WriteLine("Time: " + secondCounter + " seconds");
+            Console.WriteLine($"Time: {time:hh\\:mm\\:ss\\.ff} seconds");
         }
     }
 }

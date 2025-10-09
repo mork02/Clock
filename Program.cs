@@ -5,8 +5,8 @@ enum Command { Timer, StopTimer, Quit };
 
     internal class Program
     {
-        private static Timer timer;
-        private static Stopwatch stopwatch;
+        private static CountdownTimer timer;
+        private static StopwatchTimer stopwatch;
 
         private static ConsoleKey key = ConsoleKey.None;
 
@@ -26,15 +26,15 @@ enum Command { Timer, StopTimer, Quit };
                 {
                     // Start Timer
                     if (timer == null)
-                        timer = new Timer();
-                    
+                        timer = new CountdownTimer();
+                    timer.setMillisecondsTime(10000.0f);
                     timer.StartTimer();
                 }
                 else if (key == KeyBindings[Command.StopTimer])
                 {
                     // Start Stopwatch
                     if (stopwatch == null)
-                        stopwatch = new Stopwatch();
+                        stopwatch = new StopwatchTimer();
 
                     stopwatch.StartTimer();
                 }
