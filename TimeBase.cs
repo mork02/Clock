@@ -46,7 +46,14 @@
         public void DrawTimer(TimeSpan time)
         {
             Console.Clear();
-            Console.WriteLine($"Time: {time:hh\\:mm\\:ss\\.ff} seconds");
+
+            string formattedTime = time.Days > 0
+                ? $"{time:dd\\.hh\\:mm\\:ss\\.ff}"
+                : time.Hours > 0
+                    ? $"{time:hh\\:mm\\:ss\\.ff}"
+                    : $"{time:mm\\:ss\\.ff}";
+
+            Console.WriteLine($"Time: {formattedTime}");
         }
     }
 }
