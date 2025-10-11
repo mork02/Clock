@@ -8,8 +8,24 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="WPF\Assets\left-arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="WPF\App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="WPF\App.xaml" />
+  </ItemGroup>
+
 	<ItemGroup>
 	   <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="WPF\Assets\left-arrow.png" />
 	</ItemGroup>
 
 </Project>
