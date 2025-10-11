@@ -5,8 +5,7 @@ I needed a simple clock on my PC, so I created one to **measure programming sess
 
 ## Tech Stack
 - **Language:** C#
-- **Framework:** .NET 8.0
-- **Libraries:** `System.Timers`, `System.Console`
+- **Framework:** .NET 8.0, WPF
 
 ## Motivation
 As a software developer, I often lose track of time while coding.  
@@ -22,8 +21,3 @@ This small console project helps me monitor my work sessions and serves as a per
 	```bash
 	dotnet run
 	```
-
-## Controls
-+ T - Start Timer
-+ S - Start Stopwatch
-+ Q - Quit
