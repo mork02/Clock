@@ -1,4 +1,6 @@
-﻿namespace Clock
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+
+namespace Clock
 {
     public abstract class TimeBase
     {
@@ -33,6 +35,16 @@
             return millisecondsTime;
         }
 
+        public string GetTimeString()
+        {
+            TimeSpan time = TimeSpan.FromMilliseconds(millisecondsTime);
+            return time.Days > 0
+                ? $"{time:dd\\.hh\\:mm\\:ss\\.ff}"
+                : time.Hours > 0
+                    ? $"{time:hh\\:mm\\:ss\\.ff}"
+                    : $"{time:mm\\:ss\\.ff}";
+        }
+
         public void ResetTime()
         {
             millisecondsTime = 0.0f;
@@ -41,19 +53,6 @@
         public void setMillisecondsTime(double value)
         {
             millisecondsTime = value;
-        }
-
-        public void DrawTimer(TimeSpan time)
-        {
-            Console.Clear();
-
-            string formattedTime = time.Days > 0
-                ? $"{time:dd\\.hh\\:mm\\:ss\\.ff}"
-                : time.Hours > 0
-                    ? $"{time:hh\\:mm\\:ss\\.ff}"
-                    : $"{time:mm\\:ss\\.ff}";
-
-            Console.WriteLine($"Time: {formattedTime}");
         }
     }
 }
