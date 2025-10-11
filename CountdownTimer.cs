@@ -16,10 +16,6 @@
                 millisecondsTime = 0;
                 StopTimer();
             }
-
-            TimeSpan t = TimeSpan.FromMilliseconds(millisecondsTime);
-
-            DrawTimer(t);    
         }
 
     }

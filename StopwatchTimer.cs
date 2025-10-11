@@ -11,9 +11,6 @@
         {
             millisecondsTime += intervalMilliseconds;
             millisecondsTime = Math.Round(millisecondsTime, 2);
-            TimeSpan t = TimeSpan.FromMilliseconds(millisecondsTime);
-
-            DrawTimer(t);
         }
     }
 }
