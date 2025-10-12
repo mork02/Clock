@@ -10,54 +10,62 @@
 
     <Grid>
         <Label 
-        x:Name="TimeLabel"
-        Content="00:00.00" 
-        HorizontalAlignment="Center" 
-        VerticalAlignment="Center" 
-        FontSize="64"/>
+                x:Name="TimeLabel"
+                Content="00:00.00" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontSize="64"/>
 
-        <Button 
-        x:Name="StartStopButton"
-        Click="OnStartStopClick"
-        Width="100"
-        Height="40"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Bottom"
-        Margin="-150,0,0,50"
-        Background="Green"
-        Foreground="White"
-        FontSize="24"
-        Content="Start"/>
-        
-        <Button 
-        x:Name="ResetButton"
-        Click="OnResetButtonClick"
-        Width="100"
-        Height="40"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Bottom"
-        Margin="150,0,0,50"
-        Background="White"
-        FontSize="24"
-        Content="Reset"/>
+        <Button Click="OnStartStopClick"
+                x:Name="StartStopButton"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="-150,0,0,50"
+                Background="Green"
+                Foreground="White"
+                FontSize="24"
+                Content="Start"/>
+
+        <Button Click="OnResetButtonClick"
+                x:Name="ResetButton"
+                Width="100"
+                Height="40"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="150,0,0,50"
+                Background="White"
+                FontSize="24"
+                Content="Reset"/>
+
+        <Button Click="OnExtraWindowClick"
+                Background="White"
+                BorderThickness="0"
+                Padding="4"
+                Margin="0,278,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Content="Create extra Window"/>
+
 
         <Button Click="OnBackToHomeClick"
-        Background="Transparent"
-        BorderThickness="0"
-        Padding="4"
-        Margin="5"
-        VerticalAlignment="Top"
-        HorizontalAlignment="Left"
-        Cursor="Hand">
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="4"
+                Margin="5"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Cursor="Hand">
 
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <Image Source="/WPF/Assets/left-arrow.png"
-               Width="16"
-               Height="16"
-               VerticalAlignment="Center"
-               Margin="0,0,4,0"/>
+                       Width="16"
+                       Height="16"
+                       VerticalAlignment="Center"
+                       Margin="0,0,4,0"/>
                 <TextBlock Text="Back to Home"
-                   VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
     </Grid>
