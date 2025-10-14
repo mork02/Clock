@@ -33,13 +33,52 @@ namespace Clock.WPF
                 MessageBox.Show($"Maximum of {MaxEntries} entries reached.");
                 return;
             }
-            entryCount++;
 
             int initialTime = 3000;
-
             CountdownTicker ticker = new CountdownTicker(initialTime);
+            countdownTickers.Add(ticker);
+            entryCount++;
 
-            ticker.Start();
+            var row = new StackPanel
+            {
+                Orientation = Orientation.Vertical,
+                Margin = new Thickness(4)
+            };
+
+            if (InputDescription.Text.Length > 0)
+            {
+                row.Children.Add(new TextBlock
+                {
+                    Text = InputDescription.Text,
+                    Margin = new Thickness(2)
+                });
+            }
+
+            var line = new StackPanel { Orientation = Orientation.Horizontal };
+
+            var display = new TextBox
+            {
+                Text = $"{ticker.GetTimeString()}",
+                Margin = new Thickness(2),
+                IsReadOnly = true,
+                Width = 100
+            };
+
+            var btnRemove = new Button
+            {
+                Content = "X",
+                Margin = new Thickness(2)
+            };
+
+            btnRemove.Tag = (ticker: ticker, row: row);
+
+            btnRemove.Click += OnTestClick;
+
+            line.Children.Add(display);
+            line.Children.Add(btnRemove);
+            row.Children.Add(line);
+
+            TimerContainer.Children.Add(row);
 
             ticker.Tick += (_, __) =>
             {
@@ -48,39 +87,22 @@ namespace Clock.WPF
                     ticker.Stop();
                 }
 
-                TimerContainer.Children
-                    .OfType<TextBox>()
-                    .ElementAt(countdownTickers.IndexOf(ticker))
-                    .Text = ticker.GetTimeString();
-
+                display.Dispatcher.Invoke(() => display.Text = $"{ticker.GetTimeString()}");
             };
 
-            countdownTickers.Add(ticker);
-
-            string text = $"{ticker.GetTimeString()}";
-
-            createTextbox(TimerContainer, text);
-
+            ticker.Start();
         }
 
-        private void createTextbox(Panel parent, string text)
+        public void OnTestClick(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = new TextBox
+            if (sender is Button btn && btn.Tag is ValueTuple<CountdownTicker, StackPanel> data)
             {
-                Text = text,
-                Margin = new Thickness(2),
-                IsReadOnly = true
-            };
-            if (InputDescription.Text.Length > 1)
-            {
-                TextBlock descrription = new TextBlock
-                {
-                    Text = $"{InputDescription.Text}",
-                    Margin = new Thickness(2),
-                };
-                parent.Children.Add(descrription);
+                var (ticker, row) = data;
+                ticker.Stop();
+                countdownTickers.Remove(ticker);
+                TimerContainer.Children.Remove(row);
+                entryCount--;
             }
-            parent.Children.Add(textBox);
         }
 
         public void OnBackToHomeClick(object sender, RoutedEventArgs e)
