@@ -14,6 +14,7 @@ namespace Clock
         public event EventHandler? Tick;
 
         public double Time => elapsedMs + (isRunning ? (DateTime.Now - startTime).TotalMilliseconds : 0);
+
         public int Interval
         {
             get => (int)timer.Interval.TotalMilliseconds;
@@ -51,6 +52,7 @@ namespace Clock
         public void Stop()
         {
             if (!isRunning) return;
+            if (Time >= 0) Reset();
             elapsedMs += (DateTime.Now - startTime).TotalMilliseconds;
             timer.Stop();
             isRunning = false;
