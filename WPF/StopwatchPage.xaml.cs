@@ -47,12 +47,6 @@ namespace Clock
             TimeLabel.Content = "00:00.00";
         }
 
-        public void OnExtraWindowClick(object sender, RoutedEventArgs e)
-        {
-            var extraWindow = new ExtraWindow();
-            extraWindow.Show();
-        }
-
         public void OnBackToHomeClick(object sender, RoutedEventArgs e)
             => NavigationService?.GoBack();
     }

@@ -39,15 +39,6 @@
                 FontSize="24"
                 Content="Reset"/>
 
-        <Button Click="OnExtraWindowClick"
-                Background="White"
-                BorderThickness="0"
-                Padding="4"
-                Margin="0,278,0,0"
-                VerticalAlignment="Top"
-                HorizontalAlignment="Center"
-                Content="Create extra Window"/>
-
 
         <Button Click="OnBackToHomeClick"
                 Background="Transparent"
