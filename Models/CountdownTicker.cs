@@ -36,9 +36,7 @@ namespace Clock
             TimeSpan t = TimeSpan.FromMilliseconds(Time);
             return t.Days > 0
                 ? $"{t:dd\\.hh\\:mm\\:ss\\.ff}"
-                : t.Hours > 0
-                    ? $"{t:hh\\:mm\\:ss\\.ff}"
-                    : $"{t:mm\\:ss\\.ff}";
+                : $"{t:hh\\:mm\\:ss\\.ff}";
         }
 
         public void Start()
