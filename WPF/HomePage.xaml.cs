@@ -18,6 +18,8 @@ namespace Clock
 {
     public partial class HomePage : Page
     {
+        private readonly StopwatchPage stopwatchPage = new StopwatchPage();
+        private readonly CountdownPage countdownPage = new CountdownPage();
         public HomePage()
         {
             InitializeComponent();
@@ -25,11 +27,11 @@ namespace Clock
 
         // Navigate to StopwatchPage when Stopwatch button is clicked
         public void OnStopwatchClick(object sender, RoutedEventArgs e)
-            => NavigationService?.Navigate(new StopwatchPage());
+            => NavigationService?.Navigate(stopwatchPage);
 
         // Navigate to Countdown when Countdown button is clicked
         public void OnCountdownClick(object sender, RoutedEventArgs e)
-            => NavigationService?.Navigate(new CountdownPage());
+            => NavigationService?.Navigate(countdownPage);
 
     }
 }
